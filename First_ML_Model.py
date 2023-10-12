@@ -4,7 +4,7 @@ import os
 
 # change current working directory
 
-os.chdir (r"C:\Users\he209945\Desktop\VSCode_workspaces")
+os.chdir (r"C:\Users\he209945\OneDrive - WA Health\Desktop\VSCode_workspaces")
 print(os.getcwd())
 # Path of the file to read
 iowa_file_path = './ML_journey/data/train.csv'
@@ -22,7 +22,7 @@ y = home_data['SalePrice']
 
 #create a DataFrame called X holding the predictive features
 # Create the list of features below
-feature_names = ['LotArea','YearBuilt','1stFlrSF','2ndFlrSF','FullBath','BedroomAbvGr','TotRmsAbvGrd']
+feature_names = ['LotArea','YearBuilt','1stFlrSF','2ndFlrSF','FullBath','BedroomAbvGr','TotRmsAbvGrd','SalePrice']
                  
 # Select data corresponding to features in feature_names
 X = home_data[feature_names]
@@ -65,3 +65,8 @@ results = pd.DataFrame (predictions, columns=['prediction'])
 
 home_data_predictions = pd.concat([X,results],axis=1)
 home_data_predictions.head()
+
+# export results to csv. note the purpose is to predict the sale price of 
+# houses that has not been sold yet
+
+home_data_predictions.to_csv('./ML_Journey/output.csv')
